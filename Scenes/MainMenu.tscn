@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/bg.png" type="Texture" id=1]
+[ext_resource path="res://Themes/MinimalUI.tres" type="Theme" id=2]
+[ext_resource path="res://Themes/kenneyUI.tres" type="Theme" id=3]
+[ext_resource path="res://Scripts/Menu.gd" type="Script" id=4]
+[ext_resource path="res://Themes/kenvector_future.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+font_data = ExtResource( 5 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="bg" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -65.0
+margin_right = 100.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 200, 0 )
+theme = ExtResource( 3 )
+custom_constants/separation = 10
+
+[node name="PlayGame" type="Button" parent="VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 0, 60 )
+text = "PLAY"
+
+[node name="QuitGame" type="Button" parent="VBoxContainer"]
+margin_top = 70.0
+margin_right = 200.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 0, 60 )
+text = "QUIT"
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -225.0
+margin_right = 225.0
+margin_bottom = 150.0
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 1 )
+text = "Tic Tac Toe"
+
+[connection signal="pressed" from="VBoxContainer/PlayGame" to="." method="_on_PlayGame_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitGame" to="." method="_on_QuitGame_pressed"]
